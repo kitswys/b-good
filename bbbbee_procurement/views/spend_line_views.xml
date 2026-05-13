@@ -1,0 +1,19 @@
+<odoo>
+    <record id="view_bbbbee_spend_line_list" model="ir.ui.view">
+        <field name="name">bbbbee.spend.line.list</field>
+        <field name="model">bbbbee.spend.line</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="batch_id"/>
+                <field name="partner_id"/>
+                <field name="invoice_date"/>
+                <field name="untaxed_amount"/>
+                <field name="excluded_amount"/>
+                <field name="included_amount"/>
+                <field name="recognition_percentage"/>
+                <field name="recognised_amount"/>
+                <field name="evidence_status"/>
+            </list>
+        </field>
+    </record>
+</odoo>

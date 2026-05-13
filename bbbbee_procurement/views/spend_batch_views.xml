@@ -1,0 +1,42 @@
+<odoo>
+    <record id="view_bbbbee_spend_batch_list" model="ir.ui.view">
+        <field name="name">bbbbee.spend.batch.list</field>
+        <field name="model">bbbbee.spend.batch</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="measurement_period_id"/>
+                <field name="company_id"/>
+                <field name="total_included_amount"/>
+                <field name="total_recognised_amount"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_bbbbee_spend_batch_form" model="ir.ui.view">
+        <field name="name">bbbbee.spend.batch.form</field>
+        <field name="model">bbbbee.spend.batch</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_lock" type="object" string="Lock" invisible="state == 'locked'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="measurement_period_id"/>
+                        <field name="company_id"/>
+                    </group>
+                    <group>
+                        <field name="total_included_amount" readonly="1"/>
+                        <field name="total_recognised_amount" readonly="1"/>
+                    </group>
+                    <field name="line_ids"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="B-good is an Odoo add-on for B-BBEE procurement control, supplier evidence management, recognised spend calculation, and verification-ready reporting."
+    />
+    <title>B-good | B-BBEE Procurement Control for Odoo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="B-good home">
+        <span class="brand-mark">Bg</span>
+        <span>B-good</span>
+      </a>
+      <nav>
+        <a href="#overview">Overview</a>
+        <a href="#documentation">Documentation</a>
+        <a href="#whitepapers">Whitepapers</a>
+        <a href="#implementation">Implementation</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <img src="assets/b-good-hero.png" alt="" />
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="eyebrow">B-BBEE Procurement Control for Odoo</p>
+          <h1 id="hero-title">Make supplier evidence, recognised spend, and procurement risk visible before verification season.</h1>
+          <p class="hero-copy">
+            B-good helps South African procurement, finance, and transformation teams manage B-BBEE supplier data inside Odoo,
+            calculate recognised procurement spend, and prepare audit-ready evidence packs.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#documentation">Read the product guide</a>
+            <a class="button secondary" href="#whitepapers">Explore whitepapers</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="overview" class="section intro-section">
+        <div class="section-heading">
+          <p class="eyebrow">The Control Gap</p>
+          <h2>Procurement data exists. B-BBEE procurement control often does not.</h2>
+        </div>
+        <div class="intro-grid">
+          <article>
+            <h3>Operational visibility</h3>
+            <p>
+              Supplier certificates, recognition percentages, ownership indicators, and expiry dates are managed where buying
+              decisions happen. Buyers can see risk before committing spend.
+            </p>
+          </article>
+          <article>
+            <h3>Traceable spend</h3>
+            <p>
+              Posted vendor bills and credit notes are imported as reporting snapshots. Original accounting records remain
+              untouched while B-BBEE calculations stay reproducible.
+            </p>
+          </article>
+          <article>
+            <h3>Verification readiness</h3>
+            <p>
+              Evidence gaps, expired documents, manual exclusions, and scorecard shortfalls are surfaced continuously instead
+              of being discovered at year-end.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="metrics-band" aria-label="Product value summary">
+        <div>
+          <span class="metric">90 / 60 / 30</span>
+          <span class="metric-label">certificate expiry alert windows</span>
+        </div>
+        <div>
+          <span class="metric">0</span>
+          <span class="metric-label">changes to posted accounting records</span>
+        </div>
+        <div>
+          <span class="metric">1</span>
+          <span class="metric-label">evidence pack per measurement period</span>
+        </div>
+        <div>
+          <span class="metric">125%</span>
+          <span class="metric-label">example recognised spend multiplier</span>
+        </div>
+      </section>
+
+      <section id="documentation" class="section documentation">
+        <div class="section-heading wide">
+          <p class="eyebrow">Product Documentation</p>
+          <h2>How B-good works inside Odoo</h2>
+          <p>
+            The module is designed as a procurement control layer across Contacts, Purchase, Accounting, Attachments, and
+            Reporting. It supports operational decisions without replacing accredited B-BBEE verification.
+          </p>
+        </div>
+
+        <div class="doc-layout">
+          <aside class="toc" aria-label="Documentation contents">
+            <a href="#doc-supplier">Supplier Compliance</a>
+            <a href="#doc-spend">Procurement Spend</a>
+            <a href="#doc-scorecard">Score Visibility</a>
+            <a href="#doc-evidence">Evidence Packs</a>
+            <a href="#doc-security">Security Model</a>
+          </aside>
+
+          <div class="doc-content">
+            <article id="doc-supplier" class="doc-panel">
+              <span class="doc-number">01</span>
+              <h3>Supplier Compliance Register</h3>
+              <p>
+                Vendor records are extended with a B-BBEE profile that captures level, recognition percentage, certificate or
+                affidavit type, document reference, issue and expiry dates, ownership percentages, and empowering supplier
+                status.
+              </p>
+              <ul>
+                <li>Active, expired, expiring soon, missing, and superseded evidence states.</li>
+                <li>Document attachments stored against the supplier profile for audit traceability.</li>
+                <li>Buyer-facing warnings when supplier evidence creates procurement risk.</li>
+              </ul>
+            </article>
+
+            <article id="doc-spend" class="doc-panel">
+              <span class="doc-number">02</span>
+              <h3>Procurement Spend Snapshot</h3>
+              <p>
+                B-good imports posted vendor bills and credit notes into measurement-period batches. The imported lines store
+                supplier, transaction date, untaxed amount, included amount, exclusion amount, recognition percentage, and
+                evidence status at the time of calculation.
+              </p>
+              <div class="formula">
+                <span>Recognised Spend</span>
+                <strong>= Included Spend x Supplier Recognition Percentage</strong>
+              </div>
+            </article>
+
+            <article id="doc-scorecard" class="doc-panel">
+              <span class="doc-number">03</span>
+              <h3>Procurement Score Visibility</h3>
+              <p>
+                Scorecard assessments combine spend batches with a configurable rule set. Teams can monitor measured spend,
+                recognised procurement spend, target percentage, achieved percentage, available points, actual points, and
+                shortfall.
+              </p>
+              <div class="mini-dashboard" aria-label="Example procurement score dashboard">
+                <div><span style="height: 78%"></span><label>Measured</label></div>
+                <div><span style="height: 54%"></span><label>Recognised</label></div>
+                <div><span style="height: 66%"></span><label>Target</label></div>
+                <div><span style="height: 28%"></span><label>Gap</label></div>
+              </div>
+            </article>
+
+            <article id="doc-evidence" class="doc-panel">
+              <span class="doc-number">04</span>
+              <h3>Verification Evidence Packs</h3>
+              <p>
+                Evidence packs collect supplier certificates, spend schedules, missing-evidence reports, exception registers,
+                audit logs, and summary reports for a selected measurement period.
+              </p>
+              <ul>
+                <li>Versioned packs support internal review and final verification preparation.</li>
+                <li>Frozen packs preserve the state used for a verification discussion.</li>
+                <li>Missing documents remain visible rather than being hidden by aggregate totals.</li>
+              </ul>
+            </article>
+
+            <article id="doc-security" class="doc-panel">
+              <span class="doc-number">05</span>
+              <h3>Role-Based Controls</h3>
+              <p>
+                Suggested groups separate everyday visibility from certificate management, spend imports, evidence pack
+                generation, scorecard approval, and rule configuration.
+              </p>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Role</th>
+                    <th>Primary control</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Compliance Officer</td>
+                    <td>Supplier evidence and certificate lifecycle</td>
+                  </tr>
+                  <tr>
+                    <td>Finance User</td>
+                    <td>Spend import and classification review</td>
+                  </tr>
+                  <tr>
+                    <td>Manager</td>
+                    <td>Assessment approval and evidence pack export</td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="whitepapers" class="section articles">
+        <div class="section-heading wide">
+          <p class="eyebrow">Whitepaper Library</p>
+          <h2>Practical articles for procurement and transformation teams</h2>
+          <p>
+            These articles can be used as campaign content, sales collateral, onboarding material, or the foundation for
+            downloadable PDFs.
+          </p>
+        </div>
+
+        <article class="whitepaper feature-article">
+          <div class="article-meta">Whitepaper 01 · Procurement Governance</div>
+          <h3>From Year-End Scramble to Continuous Procurement Control</h3>
+          <p>
+            Many organisations treat B-BBEE procurement reporting as a year-end exercise. Finance exports spend, procurement
+            searches for certificates, consultants request evidence, and teams discover too late that supplier documents have
+            expired or that recognised spend has fallen behind target.
+          </p>
+          <p>
+            Continuous procurement control changes the operating model. Supplier evidence is captured when supplier data is
+            maintained. Recognition percentages are visible when purchase decisions are made. Accounting transactions are
+            imported into measurement periods while there is still time to adjust buying behaviour.
+          </p>
+          <p>
+            The result is not automatic certification. It is better governance: clear ownership, reproducible calculations,
+            visible exceptions, and a documented route from source transaction to recognised procurement spend.
+          </p>
+        </article>
+
+        <div class="article-grid">
+          <article class="whitepaper">
+            <div class="article-meta">Whitepaper 02 · Evidence Management</div>
+            <h3>Why Supplier Certificates Need a Lifecycle, Not a Folder</h3>
+            <p>
+              A shared folder can store certificates, but it cannot reliably answer whether a document was valid on the date
+              spend occurred. B-good treats evidence as lifecycle data: uploaded, active, expiring, expired, superseded, and
+              preserved for review.
+            </p>
+            <p>
+              This matters because verification conversations depend on timing and traceability. A certificate that is valid
+              today may not support a transaction from a prior period, and a superseded document may still be relevant for
+              audit history.
+            </p>
+          </article>
+
+          <article class="whitepaper">
+            <div class="article-meta">Whitepaper 03 · Finance Controls</div>
+            <h3>The Case for Snapshotting Accounting Spend</h3>
+            <p>
+              B-BBEE reporting should not mutate posted accounting records. Instead, B-good imports a snapshot into a
+              procurement spend batch. The snapshot stores the supplier, source transaction, date, amount, classification, and
+              recognition percentage used for the assessment.
+            </p>
+            <p>
+              This protects accounting integrity while giving transformation and procurement teams a working dataset for
+              classification, exclusions, evidence review, and score visibility.
+            </p>
+          </article>
+
+          <article class="whitepaper">
+            <div class="article-meta">Whitepaper 04 · Buying Decisions</div>
+            <h3>Procurement Warnings Should Inform, Not Block</h3>
+            <p>
+              Buyers need context before confirming RFQs and purchase orders. A supplier may have expired evidence, missing
+              documents, low recognition, or incomplete profile data. B-good surfaces these risks at the point of purchase.
+            </p>
+            <p>
+              The system should warn and inform, while still preserving business discretion. Where policy allows an override,
+              the reason should be captured so exceptions become visible governance data rather than informal decisions.
+            </p>
+          </article>
+
+          <article class="whitepaper">
+            <div class="article-meta">Whitepaper 05 · Verification Preparation</div>
+            <h3>What Makes an Evidence Pack Useful?</h3>
+            <p>
+              A useful pack does more than collect files. It links the measurement period, supplier list, valid certificates,
+              spend schedule, recognition-level summary, missing-evidence report, manual exclusions, and audit notes into one
+              reviewable package.
+            </p>
+            <p>
+              B-good structures this pack so internal teams can see what is ready, what requires review, and what needs a
+              documented exception before engaging a verification professional.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="implementation" class="section implementation">
+        <div class="section-heading">
+          <p class="eyebrow">Implementation Path</p>
+          <h2>A conservative rollout for Odoo teams</h2>
+        </div>
+        <div class="timeline">
+          <article>
+            <span>Phase 1</span>
+            <h3>Supplier register setup</h3>
+            <p>Load supplier B-BBEE profiles, recognition percentages, document types, expiry dates, and responsible owners.</p>
+          </article>
+          <article>
+            <span>Phase 2</span>
+            <h3>Spend import and review</h3>
+            <p>Import posted vendor transactions into a measurement period and classify included, excluded, or review spend.</p>
+          </article>
+          <article>
+            <span>Phase 3</span>
+            <h3>Score and evidence readiness</h3>
+            <p>Calculate recognised spend, monitor shortfall, resolve missing evidence, and generate review packs.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section disclaimer">
+        <div>
+          <p class="eyebrow">Important Disclaimer</p>
+          <h2>B-good supports procurement control. It does not certify B-BBEE status.</h2>
+        </div>
+        <p>
+          Final B-BBEE verification and certification remain the responsibility of accredited B-BBEE verification professionals,
+          legal advisers, and qualified transformation specialists. The module is designed to improve operational visibility,
+          evidence management, internal reporting, and verification preparation.
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong>B-good</strong>
+        <p>B-BBEE Procurement Control for Odoo.</p>
+      </div>
+      <a class="button secondary" href="#top">Back to top</a>
+    </footer>
+  </body>
+</html>

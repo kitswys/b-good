@@ -1,0 +1,35 @@
+<odoo>
+    <record id="action_report_bbbbee_missing_evidence" model="ir.actions.report">
+        <field name="name">Missing Evidence Report</field>
+        <field name="model">bbbbee.spend.line</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">bbbbee_procurement.report_missing_evidence</field>
+        <field name="report_file">bbbbee_procurement.report_missing_evidence</field>
+    </record>
+
+    <template id="report_missing_evidence">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <h2>Missing Evidence Report</h2>
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Supplier</th>
+                            <th>Invoice Date</th>
+                            <th>Included Amount</th>
+                            <th>Evidence Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="docs" t-as="line">
+                            <td><span t-field="line.partner_id"/></td>
+                            <td><span t-field="line.invoice_date"/></td>
+                            <td><span t-field="line.included_amount"/></td>
+                            <td><span t-field="line.evidence_status"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </t>
+        </t>
+    </template>
+</odoo>

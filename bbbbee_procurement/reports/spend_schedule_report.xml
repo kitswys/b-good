@@ -1,0 +1,40 @@
+<odoo>
+    <record id="action_report_bbbbee_spend_schedule" model="ir.actions.report">
+        <field name="name">Procurement Spend Schedule</field>
+        <field name="model">bbbbee.spend.batch</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">bbbbee_procurement.report_spend_schedule</field>
+        <field name="report_file">bbbbee_procurement.report_spend_schedule</field>
+    </record>
+
+    <template id="report_spend_schedule">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <h2>Procurement Spend Schedule</h2>
+                    <p><strong>Batch:</strong> <span t-field="doc.name"/></p>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Supplier</th>
+                                <th>Untaxed</th>
+                                <th>Included</th>
+                                <th>Recognition %</th>
+                                <th>Recognised</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="doc.line_ids" t-as="line">
+                                <td><span t-field="line.partner_id"/></td>
+                                <td><span t-field="line.untaxed_amount"/></td>
+                                <td><span t-field="line.included_amount"/></td>
+                                <td><span t-field="line.recognition_percentage"/></td>
+                                <td><span t-field="line.recognised_amount"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

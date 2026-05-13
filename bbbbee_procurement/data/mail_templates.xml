@@ -1,0 +1,12 @@
+<odoo noupdate="1">
+    <record id="mail_template_certificate_expiring" model="mail.template">
+        <field name="name">B-BBEE Certificate Expiring</field>
+        <field name="model_id" ref="model_bbbbee_supplier_certificate"/>
+        <field name="subject">B-BBEE evidence expiring for ${object.partner_id.name}</field>
+        <field name="body_html" type="html">
+            <div>
+                <p>The B-BBEE evidence for <t t-out="object.partner_id.name"/> expires on <t t-out="object.expiry_date"/>.</p>
+            </div>
+        </field>
+    </record>
+</odoo>

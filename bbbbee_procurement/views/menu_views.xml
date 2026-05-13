@@ -1,0 +1,70 @@
+<odoo>
+    <record id="action_bbbbee_supplier_profile" model="ir.actions.act_window">
+        <field name="name">Supplier Profiles</field>
+        <field name="res_model">bbbbee.supplier.profile</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_bbbbee_supplier_certificate" model="ir.actions.act_window">
+        <field name="name">Certificates and Affidavits</field>
+        <field name="res_model">bbbbee.supplier.certificate</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_bbbbee_measurement_period" model="ir.actions.act_window">
+        <field name="name">Measurement Periods</field>
+        <field name="res_model">bbbbee.measurement.period</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_bbbbee_spend_batch" model="ir.actions.act_window">
+        <field name="name">Spend Batches</field>
+        <field name="res_model">bbbbee.spend.batch</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_bbbbee_spend_line" model="ir.actions.act_window">
+        <field name="name">Spend Lines</field>
+        <field name="res_model">bbbbee.spend.line</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <record id="action_bbbbee_scorecard_assessment" model="ir.actions.act_window">
+        <field name="name">Scorecard Assessments</field>
+        <field name="res_model">bbbbee.scorecard.assessment</field>
+        <field name="view_mode">list,form,graph</field>
+    </record>
+
+    <record id="action_bbbbee_scorecard_rule_set" model="ir.actions.act_window">
+        <field name="name">Rule Sets</field>
+        <field name="res_model">bbbbee.scorecard.rule.set</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <record id="action_bbbbee_evidence_pack" model="ir.actions.act_window">
+        <field name="name">Evidence Packs</field>
+        <field name="res_model">bbbbee.evidence.pack</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_bbbbee_dashboard" model="ir.actions.act_window">
+        <field name="name">Dashboard</field>
+        <field name="res_model">bbbbee.scorecard.assessment</field>
+        <field name="view_mode">graph,list</field>
+    </record>
+
+    <menuitem id="menu_bbbbee_root" name="B-good" sequence="35" groups="bbbbee_procurement.group_bbbbee_user"/>
+    <menuitem id="menu_bbbbee_dashboard" name="Dashboard" parent="menu_bbbbee_root" action="action_bbbbee_dashboard" sequence="10"/>
+    <menuitem id="menu_bbbbee_suppliers" name="Supplier Compliance" parent="menu_bbbbee_root" sequence="20"/>
+    <menuitem id="menu_bbbbee_supplier_profiles" name="Supplier Profiles" parent="menu_bbbbee_suppliers" action="action_bbbbee_supplier_profile" sequence="10"/>
+    <menuitem id="menu_bbbbee_supplier_certificates" name="Certificates" parent="menu_bbbbee_suppliers" action="action_bbbbee_supplier_certificate" sequence="20"/>
+    <menuitem id="menu_bbbbee_spend" name="Procurement Spend" parent="menu_bbbbee_root" sequence="30"/>
+    <menuitem id="menu_bbbbee_spend_batches" name="Spend Batches" parent="menu_bbbbee_spend" action="action_bbbbee_spend_batch" sequence="10"/>
+    <menuitem id="menu_bbbbee_spend_lines" name="Spend Lines" parent="menu_bbbbee_spend" action="action_bbbbee_spend_line" sequence="20"/>
+    <menuitem id="menu_bbbbee_scorecard" name="Scorecard" parent="menu_bbbbee_root" sequence="40"/>
+    <menuitem id="menu_bbbbee_assessments" name="Assessments" parent="menu_bbbbee_scorecard" action="action_bbbbee_scorecard_assessment" sequence="10"/>
+    <menuitem id="menu_bbbbee_evidence" name="Evidence Packs" parent="menu_bbbbee_root" action="action_bbbbee_evidence_pack" sequence="50"/>
+    <menuitem id="menu_bbbbee_config" name="Configuration" parent="menu_bbbbee_root" sequence="90" groups="bbbbee_procurement.group_bbbbee_administrator"/>
+    <menuitem id="menu_bbbbee_periods" name="Measurement Periods" parent="menu_bbbbee_config" action="action_bbbbee_measurement_period" sequence="10"/>
+    <menuitem id="menu_bbbbee_rule_sets" name="Rule Sets" parent="menu_bbbbee_config" action="action_bbbbee_scorecard_rule_set" sequence="20"/>
+</odoo>

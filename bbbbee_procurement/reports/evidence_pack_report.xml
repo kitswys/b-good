@@ -1,0 +1,36 @@
+<odoo>
+    <record id="action_report_bbbbee_evidence_pack" model="ir.actions.report">
+        <field name="name">Evidence Pack Summary</field>
+        <field name="model">bbbbee.evidence.pack</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">bbbbee_procurement.report_evidence_pack</field>
+        <field name="report_file">bbbbee_procurement.report_evidence_pack</field>
+    </record>
+
+    <template id="report_evidence_pack">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <h2>Evidence Pack Summary</h2>
+                    <p><strong>Pack:</strong> <span t-field="doc.name"/></p>
+                    <p><strong>Measurement Period:</strong> <span t-field="doc.measurement_period_id"/></p>
+                    <p><strong>Generated:</strong> <span t-field="doc.generated_on"/></p>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="doc.item_ids" t-as="item">
+                                <td><span t-field="item.name"/></td>
+                                <td><span t-field="item.item_type"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

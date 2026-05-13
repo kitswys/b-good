@@ -1,0 +1,97 @@
+<odoo>
+    <record id="view_bbbbee_measurement_period_list" model="ir.ui.view">
+        <field name="name">bbbbee.measurement.period.list</field>
+        <field name="model">bbbbee.measurement.period</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="company_id"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="active_rule_set_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_bbbbee_measurement_period_form" model="ir.ui.view">
+        <field name="name">bbbbee.measurement.period.form</field>
+        <field name="model">bbbbee.measurement.period</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="company_id"/>
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+                        <field name="active_rule_set_id"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_bbbbee_scorecard_assessment_list" model="ir.ui.view">
+        <field name="name">bbbbee.scorecard.assessment.list</field>
+        <field name="model">bbbbee.scorecard.assessment</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="measurement_period_id"/>
+                <field name="total_measured_spend"/>
+                <field name="recognised_procurement_spend"/>
+                <field name="achieved_percentage"/>
+                <field name="actual_points"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_bbbbee_scorecard_assessment_form" model="ir.ui.view">
+        <field name="name">bbbbee.scorecard.assessment.form</field>
+        <field name="model">bbbbee.scorecard.assessment</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_recalculate" type="object" string="Recalculate"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="company_id"/>
+                        <field name="measurement_period_id"/>
+                        <field name="rule_set_id"/>
+                    </group>
+                    <group>
+                        <field name="total_measured_spend" readonly="1"/>
+                        <field name="recognised_procurement_spend" readonly="1"/>
+                        <field name="target_percentage" readonly="1"/>
+                        <field name="achieved_percentage" readonly="1"/>
+                        <field name="available_points" readonly="1"/>
+                        <field name="actual_points" readonly="1"/>
+                        <field name="shortfall_amount" readonly="1"/>
+                    </group>
+                    <field name="spend_batch_ids"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_bbbbee_scorecard_rule_set_list" model="ir.ui.view">
+        <field name="name">bbbbee.scorecard.rule.set.list</field>
+        <field name="model">bbbbee.scorecard.rule.set</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="effective_date"/>
+                <field name="expiry_date"/>
+                <field name="target_percentage"/>
+                <field name="available_points"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,41 @@
+<odoo>
+    <record id="view_bbbbee_supplier_certificate_list" model="ir.ui.view">
+        <field name="name">bbbbee.supplier.certificate.list</field>
+        <field name="model">bbbbee.supplier.certificate</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="partner_id"/>
+                <field name="certificate_type"/>
+                <field name="certificate_number"/>
+                <field name="issue_date"/>
+                <field name="expiry_date"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_bbbbee_supplier_certificate_form" model="ir.ui.view">
+        <field name="name">bbbbee.supplier.certificate.form</field>
+        <field name="model">bbbbee.supplier.certificate</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_supersede" type="object" string="Supersede"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="profile_id"/>
+                        <field name="certificate_type"/>
+                        <field name="certificate_number"/>
+                        <field name="issue_date"/>
+                        <field name="expiry_date"/>
+                        <field name="attachment_id"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+</odoo>

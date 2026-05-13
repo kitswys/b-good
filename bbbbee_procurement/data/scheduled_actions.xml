@@ -1,0 +1,11 @@
+<odoo noupdate="1">
+    <record id="ir_cron_bbbbee_certificate_status" model="ir.cron">
+        <field name="name">B-BBEE: Refresh Certificate Status</field>
+        <field name="model_id" ref="model_bbbbee_supplier_certificate"/>
+        <field name="state">code</field>
+        <field name="code">model.search([])._compute_state()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+    </record>
+</odoo>

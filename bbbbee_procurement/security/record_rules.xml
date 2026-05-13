@@ -1,0 +1,15 @@
+<odoo>
+    <record id="rule_bbbbee_supplier_profile_company" model="ir.rule">
+        <field name="name">B-BBEE supplier profiles: user companies</field>
+        <field name="model_id" ref="model_bbbbee_supplier_profile"/>
+        <field name="domain_force">['|', ('partner_id.company_id', '=', False), ('partner_id.company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[(4, ref('group_bbbbee_user'))]"/>
+    </record>
+
+    <record id="rule_bbbbee_company_records" model="ir.rule">
+        <field name="name">B-BBEE company records: user companies</field>
+        <field name="model_id" ref="model_bbbbee_spend_batch"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[(4, ref('group_bbbbee_user'))]"/>
+    </record>
+</odoo>

@@ -1,0 +1,13 @@
+<odoo>
+    <record id="view_bbbbee_dashboard_graph" model="ir.ui.view">
+        <field name="name">bbbbee.dashboard.graph</field>
+        <field name="model">bbbbee.scorecard.assessment</field>
+        <field name="arch" type="xml">
+            <graph string="B-BBEE Procurement Performance" type="bar">
+                <field name="measurement_period_id"/>
+                <field name="recognised_procurement_spend" type="measure"/>
+                <field name="total_measured_spend" type="measure"/>
+            </graph>
+        </field>
+    </record>
+</odoo>
