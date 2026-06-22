@@ -1,0 +1,191 @@
+<odoo>
+    <record id="action_bbbbee_documentation_wizard" model="ir.actions.act_window">
+        <field name="name">Documentation</field>
+        <field name="res_model">bbbbee.documentation.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+
+    <record id="view_bbbbee_documentation_wizard_form" model="ir.ui.view">
+        <field name="name">bbbbee.documentation.wizard.form</field>
+        <field name="model">bbbbee.documentation.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Documentation" class="bbbbee-ui">
+                <sheet class="bg-100">
+                    <div class="row bbbbee-doc-shell">
+                        <div class="col-md-4">
+                            <div class="card p-4 shadow-sm border-0 bg-white mb-3">
+                                <span class="text-uppercase text-muted small">Documentation</span>
+                                <h2 class="h4 font-weight-bold mb-2">B-good product guide</h2>
+                                <p class="text-muted small">A deeper explanation of the scorecard, the numbers behind it, and the operational meaning of each area in the module.</p>
+
+                                <hr class="my-3"/>
+
+                                <h5 class="h6 font-weight-bold mb-2">🎯 Core Target Areas</h5>
+                                <ul class="pl-3 mb-4 small text-muted">
+                                    <li class="mb-1"><strong>Scorecard:</strong> How the number is built</li>
+                                    <li class="mb-1"><strong>Risk:</strong> What is exposed</li>
+                                    <li class="mb-1"><strong>Actions:</strong> What to fix next</li>
+                                </ul>
+
+                                <h5 class="h6 font-weight-bold mb-2">👥 Who It Helps</h5>
+                                <p class="text-muted small mb-0">Built for executives, finance teams, procurement managers, and compliance officers who need to understand spend risk and score impact quickly.</p>
+                            </div>
+
+                            <div class="card p-3 shadow-sm border-0 bg-white sticky-top bbbbee-doc-toc" style="top: 20px; z-index: 10;">
+                                <h5 class="h6 font-weight-bold text-uppercase text-muted mb-3" style="font-size: 11px; letter-spacing: 0.5px;">Table of Contents</h5>
+                                <div class="d-flex flex-column wiki-toc-links">
+                                    <a href="#module_overview" class="text-muted small py-2 border-bottom border-light d-block text-decoration-none hover-purple">📋 Module Overview</a>
+                                    <a href="#scorecard_mechanics" class="text-muted small py-2 border-bottom border-light d-block text-decoration-none hover-purple">📊 Scorecard Mechanics</a>
+                                    <a href="#supplier_profiles" class="text-muted small py-2 border-bottom border-light d-block text-decoration-none hover-purple">🤝 Supplier Profiles &amp; Compliance</a>
+                                    <a href="#spend_batches" class="text-muted small py-2 border-bottom border-light d-block text-decoration-none hover-purple">💰 Spend Batches &amp; Ingestion</a>
+                                    <a href="#evidence_packs" class="text-muted small py-2 border-bottom border-light d-block text-decoration-none hover-purple">📦 Evidence Packs &amp; Auditing</a>
+                                    <a href="#metric_glossary" class="text-muted small py-2 d-block text-decoration-none hover-purple">🔍 Metric Interpretation Glossary</a>
+                                    <a href="#implementation_notes" class="text-muted small py-2 border-top border-light d-block text-decoration-none hover-purple">🧩 Implementation Notes</a>
+                                    <a href="#common_scenarios" class="text-muted small py-2 border-bottom border-light d-block text-decoration-none hover-purple">🧪 Common Scenarios</a>
+                                    <a href="#faq" class="text-muted small py-2 d-block text-decoration-none hover-purple">❓ FAQ and Edge Cases</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8">
+                            <div class="d-flex justify-content-between align-items-center mb-4 bg-white p-3 rounded shadow-sm bbbbee-doc-toolbar">
+                                <h3 class="h5 font-weight-bold text-dark mb-0">Knowledge Base Articles</h3>
+                                <div class="input-group bbbbee-doc-search" style="max-width: 320px;">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-transparent border-right-0 text-muted"><i class="fa fa-search"></i></span>
+                                    </div>
+                                    <input type="text" id="wikiSearchInput" class="form-control border-left-0 bg-light" placeholder="Type to search sections instantly..."/>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-info border-0 shadow-sm p-4 bg-light mb-4">
+                                <h5 class="font-weight-bold text-info mb-1">What B-good does</h5>
+                                <p class="text-muted mb-0">B-good turns preferential procurement into a live operating view. It tracks spend, supplier compliance, evidence readiness, and score movement in one place so leaders can act sooner.</p>
+                            </div>
+
+                            <div id="module_overview" class="card p-4 shadow-sm border-0 bg-white mb-3 doc-section-card" data-keywords="module overview handbook guide platform story b-good purpose executive summary">
+                                <div class="bbbbee-doc-accent-header mb-3">
+                                    <h4 class="h5 font-weight-bold text-dark mb-0">Module Overview</h4>
+                                </div>
+                                <p class="text-muted mb-3">This module is the commercial control layer for preferential procurement inside B-good. It unifies score visibility, supplier evidence, spend exposure, and verification preparation into a single operational workspace so procurement and finance teams can move from reactive reporting to active management.</p>
+                                <p class="text-muted mb-0">The design assumption behind the module is simple: procurement value only matters when it is both commercially useful and defensible during review. Every screen in the app is meant to help the business understand where value is protected, where it is exposed, and what actions will improve the score the fastest.</p>
+                                <p class="text-muted mb-0 mt-3">The module functions independently of legacy ledger constraints, creating an isolated staging area where simulation rules can be executed safely before values are committed to production compliance targets.</p>
+                            </div>
+
+                            <div id="scorecard_mechanics" class="card p-4 shadow-sm border-0 bg-white mb-3 doc-section-card" data-keywords="scorecard mechanics levels points thresholds live score target threshold recognition penalty legislative requirements">
+                                <div class="bbbbee-doc-accent-header mb-3">
+                                    <h4 class="h5 font-weight-bold text-dark mb-0">Scorecard Mechanics</h4>
+                                </div>
+                                <p class="text-muted mb-3">The scorecard is the executive summary of preferential procurement performance. It consolidates supplier compliance, recognised spend, evidence quality, and risk exposure into one live view so a leadership team can see whether the business is moving toward stronger recognition or drifting into audit vulnerability.</p>
+                                <p class="text-muted mb-3">The system monitors cumulative target targets across sub-minimum requirements. Failing to meet a sub-minimum automatically triggers a recognition penalty, which downgrades the overall tier output regardless of point total. That means the headline level is not just a vanity figure; it is a compact representation of how effectively the organisation has converted spend into compliant value.</p>
+                                <div class="bg-light p-3 rounded mb-3">
+                                    <span class="text-uppercase small font-weight-bold text-muted d-block mb-1">Key Performance Elements</span>
+                                    <ul class="list-unstyled pl-0 small text-muted mb-0">
+                                    <li class="mb-2"><strong>Live score:</strong> The real-time performance indicator that moves as new spend batches are imported or evidence states change.</li>
+                                    <li class="mb-2"><strong>Level 1-8:</strong> The current B-BBEE position, calculated from recognition outcomes and threshold alignment.</li>
+                                    <li class="mb-0"><strong>Next level:</strong> The precise points gap required to elevate the organisation into the next tier.</li>
+                                </ul>
+                                </div>
+                                <p class="text-muted mb-0">Operationally, this gives procurement committees a way to predict score movement before the year closes. It also creates a consistent language for finance, compliance, and buyers to discuss risk without needing to interpret spreadsheets manually.</p>
+                                <p class="text-muted small mb-0 mt-3">Dynamic target targets are assessed per legislative sub-weight. If a company fails a core threshold element, the system automatically triggers an optimization prompt within the user dashboard to guide mitigation paths.</p>
+                            </div>
+
+                            <div id="supplier_profiles" class="card p-4 shadow-sm border-0 bg-white mb-3 doc-section-card" data-keywords="supplier compliance profiles certificates affidavits verification disputed expired missing recognition credentials supplier node">
+                                <div class="bbbbee-doc-accent-header mb-3">
+                                    <h4 class="h5 font-weight-bold text-dark mb-0">Supplier Profiles &amp; Compliance</h4>
+                                </div>
+                                <p class="text-muted mb-3">Supplier compliance is the proof layer beneath the scorecard. Every supplier entity acts as an asset node. When a verification agency challenges a vendor's credentials, changing the status flag to 'Disputed' instantly triggers a cascading recalculation across all historical spend streams referencing that node.</p>
+                                <p class="text-muted mb-3">In practical terms, supplier records are not passive contact cards. They are the system’s trust anchors. Their recognition percentage, B-BBEE level, and current evidence state determine whether spend can be counted, whether it must be isolated for manual review, and whether it will reinforce or weaken the organisation’s score at reporting time.</p>
+                                <p class="text-muted small mb-3">Because supplier profiles serve as the foundation for enterprise spend attribution, changing any individual vendor's B-BBEE rating forces an automated background analysis across all matching invoice rows inside the active fiscal year.</p>
+                                <div class="border-top pt-2">
+                                    <span class="badge badge-light mr-2">Validated Path</span>
+                                    <span class="text-muted small">When supplier evidence is current, recognised spend flows cleanly into the scorecard with less reconciliation overhead.</span>
+                                </div>
+                            </div>
+
+                            <div id="spend_batches" class="card p-4 shadow-sm border-0 bg-white mb-3 doc-section-card" data-keywords="spend batches ingestion ledger normalized vat quarantine unmapped transactions accounting logs recognised spend">
+                                <div class="bbbbee-doc-accent-header mb-3">
+                                    <h4 class="h5 font-weight-bold text-dark mb-0">Spend Batches &amp; Ingestion</h4>
+                                </div>
+                                <p class="text-muted mb-3">Spend management bridges the gap between raw accounting ledgers and the compliance score. Raw accounting logs are normalized during state ingestion. The ledger processor matches VAT registration strings against active database records, routing unmapped items into a quarantine ledger for manual assignment.</p>
+                                <p class="text-muted mb-3">The process is intentionally strict because recognition quality depends on the quality of the underlying match. If a transaction cannot be tied to an active supplier record or the evidence state is weak, the engine treats that value as exposed rather than automatically optimistic. That prevents inflated recognition claims and makes the control environment auditable.</p>
+                                <p class="text-muted mb-0"><em>Note: Unmapped transactions represent critical data leakage and should be assigned to an active supplier entity immediately to prevent unrecognized capital waste.</em></p>
+                            </div>
+
+                            <div id="evidence-packs" class="card p-4 shadow-sm border-0 bg-white mb-3 doc-section-card" data-keywords="evidence packs audit preparation certificates affidavits export bundles audit readiness supporting documents">
+                                <div class="bbbbee-doc-accent-header mb-3">
+                                    <h4 class="h5 font-weight-bold text-dark mb-0">Evidence Packs &amp; Auditing</h4>
+                                </div>
+                                <p class="text-muted mb-3">Evidence packs act as the operational bridge between live compliance activity and audit readiness. Instead of manually scrambling to gather certificates, affidavits, and matching invoices when review season arrives, the module compiles these dependencies into verifiable export bundles that can be used as a structured audit narrative.</p>
+                                <p class="text-muted mb-0">Each pack groups verified supplier records, active certification metadata, and underlying spend ledgers. This transparency removes operational guesswork, shortens external review time, and reduces the risk of retroactive point rejection because the underlying evidence trail is already assembled in one place.</p>
+                            </div>
+
+                            <div id="metric_glossary" class="card p-4 shadow-sm border-0 bg-white mb-3 doc-section-card" data-keywords="metric interpretation glossary spend at risk verification ready fastest path diagnostic metrics definitions glossary">
+                                <div class="bbbbee-doc-accent-header mb-3">
+                                    <h4 class="h5 font-weight-bold text-dark mb-0">Metric Interpretation Glossary</h4>
+                                </div>
+                                <p class="text-muted mb-3">Interpreting the interface metrics accurately allows teams to prioritise high-value procurement interventions based on clear financial data rather than intuition. These definitions are intentionally operational so leaders can translate a number into a commercial decision.</p>
+                                <ul class="list-unstyled pl-0 small text-muted mb-0">
+                                    <li class="mb-3 pb-2 border-bottom">
+                                        <span class="d-block font-weight-bold text-dark">Spend at Risk</span>
+                                        The total capital directed toward vendors who currently lack valid documentation or have expired files. This value is vulnerable because an audit performed today would not accept it as verified recognition.
+                                    </li>
+                                    <li class="mb-3 pb-2 border-bottom">
+                                        <span class="d-block font-weight-bold text-dark">Verification-Ready</span>
+                                        The safe zone. This is procurement volume backed by current, unexpired, and validated documentation, making it highly likely to count in the scorecard.
+                                    </li>
+                                    <li class="mb-0">
+                                        <span class="d-block font-weight-bold text-dark">Fastest Path</span>
+                                        The system’s highest-impact improvement route. It surfaces the supplier fixes that unlock the next compliance tier with the least effort and the greatest score movement.
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div id="implementation_notes" class="card p-4 shadow-sm border-0 bg-white mb-3 doc-section-card" data-keywords="implementation notes setup dependencies company measurement period rule set import validation data quality support roadmap">
+                                <div class="bbbbee-doc-accent-header mb-3">
+                                    <h4 class="h5 font-weight-bold text-dark mb-0">Implementation Notes</h4>
+                                </div>
+                                <p class="text-muted mb-3">B-good works best when the core reference data is kept clean and current. The module expects a stable company context, an active measurement period, and reliable supplier master data before spend is imported in bulk. If those inputs are weak, the scorecard still calculates, but the output will reflect the underlying data quality rather than a polished operational picture.</p>
+                                <p class="text-muted mb-3">The product is designed to sit on top of existing Odoo structures rather than forcing a parallel accounting model. That means implementation is mostly about discipline: consistent supplier naming, current evidence uploads, and a clear ownership chain for who maintains the score inputs.</p>
+                                <p class="text-muted mb-0">In a commercial rollout, this section is where admins should look first when a score appears too low, a document upload fails, or a batch does not reconcile into the expected recognition bucket.</p>
+                            </div>
+
+                            <div id="common_scenarios" class="card p-4 shadow-sm border-0 bg-white mb-3 doc-section-card" data-keywords="common scenarios examples missing evidence expired certificates disputed supplier low score audit issue">
+                                <div class="bbbbee-doc-accent-header mb-3">
+                                    <h4 class="h5 font-weight-bold text-dark mb-0">Common Scenarios</h4>
+                                </div>
+                                <p class="text-muted mb-3">A typical low-risk scenario is a supplier with a current certificate, a verified recognition percentage, and a clean spend history. In that case, the spend line should flow cleanly into the verification-ready bucket and appear in the scorecard as dependable recognised value.</p>
+                                <p class="text-muted mb-3">A more sensitive scenario is when a supplier’s certificate has expired but historic spend remains present in the system. The module should not silently treat that value as safe; instead it should flag the exposure so the business can decide whether to refresh the evidence, move spend, or accept the reduction in recognition.</p>
+                                <p class="text-muted mb-0">The most common review problem is not the absence of data but the presence of data that has become stale. That is why the product emphasizes status transitions, expiry visibility, and operational follow-through rather than just list reporting.</p>
+                            </div>
+
+                            <div id="faq" class="card p-4 shadow-sm border-0 bg-white mb-3 doc-section-card" data-keywords="faq edge cases questions troubleshooting why score low how to interpret data support">
+                                <div class="bbbbee-doc-accent-header mb-3">
+                                    <h4 class="h5 font-weight-bold text-dark mb-0">FAQ and Edge Cases</h4>
+                                </div>
+                                <ul class="list-unstyled pl-0 small text-muted mb-0">
+                                    <li class="mb-3 pb-2 border-bottom">
+                                        <span class="d-block font-weight-bold text-dark">Why can the score move without new spend?</span>
+                                        Because evidence status changes can alter whether existing spend is recognized, which means a certificate update can improve or reduce the score even when no new invoice is imported.
+                                    </li>
+                                    <li class="mb-3 pb-2 border-bottom">
+                                        <span class="d-block font-weight-bold text-dark">Why do some suppliers appear risky?</span>
+                                        A supplier becomes risky when documentation is missing, disputed, or expired. The system surfaces that risk because the related spend cannot be treated as fully defensible.
+                                    </li>
+                                    <li class="mb-0">
+                                        <span class="d-block font-weight-bold text-dark">What happens when data is incomplete?</span>
+                                        Incomplete data is handled conservatively. The engine prefers to flag exposure rather than overstate compliance, which protects the business from false confidence during verification.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </sheet>
+                <footer>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

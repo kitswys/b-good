@@ -1,0 +1,125 @@
+<odoo>
+    <record id="action_bbbbee_dashboard" model="ir.actions.act_window">
+        <field name="name">Dashboard</field>
+        <field name="res_model">bbbbee.dashboard.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+
+    <record id="view_bbbbee_dashboard_form" model="ir.ui.view">
+        <field name="name">bbbbee.dashboard.wizard.form</field>
+        <field name="model">bbbbee.dashboard.wizard</field>
+        <field name="arch" type="xml">
+            <form string="B-BBEE Procurement Dashboard" class="bbbbee-ui" create="false">
+                <sheet>
+                    <div class="container-fluid o_dashboard_action w-100 p-3">
+                        <div class="oe_title">
+                            <h1>B-BBEE Scorecard For Your Company</h1>
+                        </div>
+                        <field name="has_data" invisible="1"/>
+                        <field name="starter_html" nolabel="1" invisible="has_data"/>
+                        <div class="d-flex flex-wrap gap-2 mb-3" invisible="has_data">
+                            <button type="object" name="action_load_starter_demo" class="btn btn-primary">Load Sample Walkthrough</button>
+                            <button type="object" name="action_open_measurement_periods" class="btn btn-outline-secondary">Create Date Range</button>
+                            <button type="object" name="action_open_supplier_profiles" class="btn btn-outline-secondary">Add Suppliers</button>
+                            <button type="object" name="action_open_import_spend" class="btn btn-outline-secondary">Import Spend</button>
+                        </div>
+                        <div class="bbbbee-dashboard-top" style="display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:12px;align-items:stretch;width:100%;margin-bottom:12px;">
+                            <div class="bbbbee-dashboard-main">
+                                <field name="scorecard_html" nolabel="1"/>
+                            </div>
+                            <div style="border:1px solid #dbe2ee;border-radius:10px;padding:14px 16px;background:#fff;min-height:180px;display:grid;gap:10px;">
+                                <field name="business_impact_html" nolabel="1"/>
+                                <field name="fastest_path_html" nolabel="1"/>
+                                <div style="border-top:1px solid #e5e7eb;padding-top:10px;">
+                                    <div style="font-size:11px;font-weight:800;letter-spacing:0.03em;text-transform:uppercase;color:#2f5be3;margin-bottom:8px;">Risk Forecast</div>
+                                    <div style="display:flex;justify-content:flex-end;margin-bottom:6px;">
+                                        <div style="min-width:180px;max-width:240px;">
+                                            <field name="expiry_window_days" string="Expiry Window (Days)"/>
+                                        </div>
+                                    </div>
+                                    <field name="forecast_html" nolabel="1"/>
+                                </div>
+                                <field name="blocking_html" nolabel="1"/>
+                            </div>
+                        </div>
+                        <group>
+                            <field name="company_id" readonly="1"/>
+                            <field name="measurement_period_id" string="Measurement Period"/>
+                        </group>
+                        <div style="display:none;">
+                            <button type="object" name="action_open_assessments" string="Open Assessments"/>
+                            <button type="object" name="action_open_missing_evidence_lines" string="Open Missing Evidence"/>
+                            <button type="object" name="action_open_high_risk_suppliers" string="Open High Risk Suppliers"/>
+                            <button type="object" name="action_open_expiring_certificates" string="Open Expiring Certificates"/>
+                            <button type="object" name="action_load_starter_demo" string="Load Sample Walkthrough"/>
+                            <button type="object" name="action_open_generate_evidence" string="Open Generate Evidence"/>
+                            <button type="object" name="action_open_supplier_profiles" string="Open Supplier Profiles"/>
+                            <button type="object" name="action_open_recalculate_scorecard" string="Open Recalculate Scorecard"/>
+                            <button type="object" name="action_open_chart_spend_classification" string="Open Spend Classification Chart"/>
+                            <button type="object" name="action_open_chart_evidence_status" string="Open Evidence Status Chart"/>
+                            <button type="object" name="action_open_chart_certificate_status" string="Open Certificate Status Chart"/>
+                            <button type="object" name="action_open_chart_assessment_trend" string="Open Assessment Trend Chart"/>
+                            <button type="object" name="action_open_info_executive_snapshot" string="Open Executive Snapshot Info"/>
+                            <button type="object" name="action_open_info_business_impact" string="Open Business Impact Info"/>
+                            <button type="object" name="action_open_info_fastest_improvement_path" string="Open Fastest Improvement Path Info"/>
+                            <button type="object" name="action_open_info_in_scope_spend" string="Open In-Scope Spend Info"/>
+                            <button type="object" name="action_open_info_verification_ready_spend" string="Open Verification-Ready Spend Info"/>
+                            <button type="object" name="action_open_info_current_period_score" string="Open Current Period Score Info"/>
+                            <button type="object" name="action_open_info_supplier_compliance_health" string="Open Supplier Compliance Health Info"/>
+                            <button type="object" name="action_open_info_spend_at_risk" string="Open Spend At Risk Info"/>
+                            <button type="object" name="action_open_info_bee_level" string="Open B-BBEE Level Info"/>
+                            <button type="object" name="action_open_dashboard_home" string="Open Dashboard Home"/>
+                        </div>
+                        <div class="row w-100" style="margin:10px 0 16px;">
+                            <div class="col-md-6 col-12">
+                                <button type="object" name="action_open_spend_batches" class="w-100" style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;min-height:96px;padding:12px 14px;border:1px solid #86efac;border-radius:10px;background:linear-gradient(135deg,#f0fdf4 0%,#dcfce7 100%);">
+                                    <div style="font-size:12px;color:#415066;margin-bottom:4px;">In-Scope Spend <i class="fa fa-info-circle text-muted ml-1 bbbbee-info-trigger" data-info-key="in_scope_spend" title="Total procurement financial spend pulled from posted vendor bills within this active measurement period." style="cursor:help;"></i></div>
+                                    <div style="font-size:30px;font-weight:700;line-height:1.1;color:#1f2d3d;"><field name="total_measured_spend" nolabel="1"/></div>
+                                    <div style="font-size:11px;color:#64748b;margin-top:4px;">Total spend under review for this period.</div>
+                                </button>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <button type="object" name="action_open_assessments" class="w-100" style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;min-height:96px;padding:12px 14px;border:1px solid #86efac;border-radius:10px;background:linear-gradient(135deg,#f0fdf4 0%,#dcfce7 100%);">
+                                    <div style="font-size:12px;color:#415066;margin-bottom:4px;">Verification-Ready Spend <i class="fa fa-info-circle text-muted ml-1 bbbbee-info-trigger" data-info-key="verification_ready_spend" title="The total portion of your spend that is fully supported by valid compliance documents and will count on a scorecard." style="cursor:help;"></i></div>
+                                    <div style="font-size:30px;font-weight:700;line-height:1.1;color:#1f2d3d;"><field name="recognised_procurement_spend" nolabel="1"/></div>
+                                    <div style="font-size:11px;color:#64748b;margin-top:4px;">Spend that can be carried through verification.</div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row w-100">
+                            <div class="col-12">
+                                <field name="visual_html" nolabel="1"/>
+                            </div>
+                        </div>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_bbbbee_dashboard_info_form" model="ir.ui.view">
+        <field name="name">bbbbee.dashboard.wizard.info.form</field>
+        <field name="model">bbbbee.dashboard.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Scorecard Info" class="bbbbee-ui" create="false">
+                <sheet>
+                    <field name="info_key" invisible="1"/>
+                    <div class="oe_title">
+                        <h1>Scorecard Guide</h1>
+                    </div>
+                    <button type="object" name="action_open_dashboard_home" string="Back to Scorecard" class="btn btn-primary mb-3"/>
+                    <field name="info_html" nolabel="1"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_bbbbee_dashboard_info" model="ir.actions.act_window">
+        <field name="name">Scorecard Info</field>
+        <field name="res_model">bbbbee.dashboard.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_bbbbee_dashboard_info_form"/>
+        <field name="target">current</field>
+    </record>
+</odoo>

@@ -1,0 +1,93 @@
+<odoo>
+    <record id="action_bbbbee_import_spend_wizard" model="ir.actions.act_window">
+        <field name="name">Import Spend</field>
+        <field name="res_model">bbbbee.import.spend.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="action_bbbbee_generate_evidence_pack_wizard" model="ir.actions.act_window">
+        <field name="name">Generate Evidence Pack</field>
+        <field name="res_model">bbbbee.generate.evidence.pack.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="action_bbbbee_recalculate_scorecard_wizard" model="ir.actions.act_window">
+        <field name="name">Recalculate Scorecard</field>
+        <field name="res_model">bbbbee.recalculate.scorecard.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_bbbbee_import_spend_wizard_form" model="ir.ui.view">
+        <field name="name">bbbbee.import.spend.wizard.form</field>
+        <field name="model">bbbbee.import.spend.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Import Spend" class="bbbbee-ui">
+                <sheet>
+                    <group>
+                        <field name="measurement_period_id"/>
+                        <field name="company_id" readonly="1"/>
+                    </group>
+                    <group>
+                        <div class="text-muted o_form_label">
+                            This will import posted vendor bills and vendor credit notes for the selected measurement period into a new spend batch.
+                        </div>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_import" type="object" string="Import" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_bbbbee_generate_evidence_pack_wizard_form" model="ir.ui.view">
+        <field name="name">bbbbee.generate.evidence.pack.wizard.form</field>
+        <field name="model">bbbbee.generate.evidence.pack.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generate Evidence Pack" class="bbbbee-ui">
+                <sheet>
+                    <group>
+                        <field name="measurement_period_id"/>
+                        <field name="assessment_id"/>
+                    </group>
+                    <group>
+                        <div class="text-muted o_form_label">
+                            The wizard creates a pack with summary items, missing evidence entries, and certificate references for the selected period.
+                        </div>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_generate" type="object" string="Generate" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_bbbbee_recalculate_scorecard_wizard_form" model="ir.ui.view">
+        <field name="name">bbbbee.recalculate.scorecard.wizard.form</field>
+        <field name="model">bbbbee.recalculate.scorecard.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Recalculate Scorecard" class="bbbbee-ui">
+                <sheet>
+                    <group>
+                        <field name="assessment_id"/>
+                    </group>
+                    <group>
+                        <div class="text-muted o_form_label">
+                            Use this to refresh recognised spend, shortfall, and points after importing spend or updating supplier evidence.
+                        </div>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_recalculate" type="object" string="Recalculate" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,90 @@
+<odoo>
+    <record id="view_bbbbee_supplier_profile_search" model="ir.ui.view">
+        <field name="name">bbbbee.supplier.profile.search</field>
+        <field name="model">bbbbee.supplier.profile</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="partner_id"/>
+                <field name="bbbbee_level"/>
+                <field name="recognition_percentage"/>
+                <field name="compliance_status"/>
+                <filter string="Expired" name="expired" domain="[('compliance_status', '=', 'expired')]"/>
+                <filter string="Missing" name="missing" domain="[('compliance_status', '=', 'missing')]"/>
+                <filter string="Valid" name="valid" domain="[('compliance_status', '=', 'valid')]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_bbbbee_supplier_profile_list" model="ir.ui.view">
+        <field name="name">bbbbee.supplier.profile.list</field>
+        <field name="model">bbbbee.supplier.profile</field>
+        <field name="arch" type="xml">
+            <list class="o_list_view_table table table-sm table-hover bbbbee-table-view bbbbee-premium-list bbbbee-supplier-profile-list">
+                <field name="partner_id" width="38%" class="font-weight-bold text-dark"/>
+                <field name="bbbbee_level" width="10%"/>
+                <field name="recognition_percentage" width="12%"/>
+                <field name="compliance_status_badge_html" string="Compliance Status" widget="html" width="16%"/>
+                <field name="active_certificate_link_html" string="Active Certificate" widget="html" width="24%"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_bbbbee_supplier_profile_form" model="ir.ui.view">
+        <field name="name">bbbbee.supplier.profile.form</field>
+        <field name="model">bbbbee.supplier.profile</field>
+        <field name="arch" type="xml">
+            <form class="bbbbee-ui">
+                <header>
+                    <button name="action_open_bulk_certificate_wizard" type="object" string="Bulk Upload Evidence" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <div class="bbbbee-help-box">
+                            <strong>Screen Help:</strong> Define the supplier's compliance baseline and evidence readiness.
+                            <br/>
+                            This screen drives the supplier's B-BBEE profile, recognition value, and audit confidence.
+                            If status is <em>Missing/Expired</em>, open the Evidence tab and add a valid certificate with an attachment.
+                        </div>
+                    </group>
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="bbbbee_level"/>
+                        <field name="recognition_percentage"/>
+                        <field name="compliance_status" readonly="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Ownership">
+                            <group>
+                                <div class="text-muted o_form_label">
+                                    Ownership fields explain the supplier's ownership profile and how much recognition it can contribute.
+                                </div>
+                            </group>
+                            <group>
+                                <field name="black_ownership_percentage"/>
+                                <field name="black_women_ownership_percentage"/>
+                                <field name="empowering_supplier_status"/>
+                            </group>
+                        </page>
+                        <page string="Evidence">
+                            <group>
+                                <div class="text-muted o_form_label">
+                                    Add certificate or affidavit records for this supplier. Valid, attached evidence increases recognition and reduces audit risk.
+                                </div>
+                            </group>
+                            <field name="certificate_ids" mode="list,form">
+                                <list editable="bottom" class="o_list_view_table table table-sm table-hover bbbbee-table-view bbbbee-premium-list bbbbee-certificate-inline-list">
+                                    <field name="certificate_type" width="18%"/>
+                                    <field name="certificate_number" width="24%"/>
+                                    <field name="expiry_date" width="16%"/>
+                                    <field name="tag_ids" widget="many2many_tags" width="24%"/>
+                                    <field name="attachment_marker_html" string="File" widget="html" width="8%"/>
+                                    <field name="state_badge_html" string="State" widget="html" width="10%"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

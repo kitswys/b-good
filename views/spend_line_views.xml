@@ -1,0 +1,55 @@
+<odoo>
+    <record id="view_bbbbee_spend_line_list" model="ir.ui.view">
+        <field name="name">bbbbee.spend.line.list</field>
+        <field name="model">bbbbee.spend.line</field>
+        <field name="arch" type="xml">
+            <list class="o_list_view_table table table-sm table-hover bbbbee-table-view bbbbee-premium-list bbbbee-spend-line-list">
+                <field name="batch_id" width="16%"/>
+                <field name="partner_id" width="22%" class="font-weight-bold text-dark"/>
+                <field name="invoice_date" width="10%"/>
+                <field name="untaxed_amount" width="10%"/>
+                <field name="excluded_amount" width="10%"/>
+                <field name="included_amount" width="10%"/>
+                <field name="recognition_percentage" width="8%"/>
+                <field name="recognised_amount" width="10%"/>
+                <field name="evidence_status_badge_html" string="Evidence Status" widget="html" width="14%"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_bbbbee_spend_line_form" model="ir.ui.view">
+        <field name="name">bbbbee.spend.line.form</field>
+        <field name="model">bbbbee.spend.line</field>
+        <field name="arch" type="xml">
+            <form string="Spend Line">
+                <sheet>
+                    <group>
+                        <div class="bbbbee-help-box">
+                            <strong>Screen Help:</strong> This is a single spend transaction used in recognised spend calculations.
+                            <br/>
+                            Use this screen to verify the source amount, recognition percentage, and evidence status for one invoice line.
+                            If recognised amount looks wrong, verify classification, excluded amount, and recognition percentage.
+                        </div>
+                    </group>
+                    <group>
+                        <field name="batch_id"/>
+                        <field name="partner_id"/>
+                        <field name="move_id"/>
+                        <field name="invoice_date"/>
+                    </group>
+                    <group>
+                        <field name="untaxed_amount"/>
+                        <field name="excluded_amount"/>
+                        <field name="included_amount" readonly="1"/>
+                        <field name="recognition_percentage"/>
+                        <field name="recognised_amount" readonly="1"/>
+                    </group>
+                    <group>
+                        <field name="classification"/>
+                        <field name="evidence_status"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

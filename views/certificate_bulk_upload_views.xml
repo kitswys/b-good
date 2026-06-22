@@ -1,0 +1,44 @@
+<odoo>
+    <record id="action_bbbbee_certificate_bulk_upload" model="ir.actions.act_window">
+        <field name="name">Bulk Upload Evidence</field>
+        <field name="res_model">bbbbee.certificate.bulk.upload.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_bbbbee_certificate_bulk_upload_form" model="ir.ui.view">
+        <field name="name">bbbbee.certificate.bulk.upload.wizard.form</field>
+        <field name="model">bbbbee.certificate.bulk.upload.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Bulk Upload Evidence" class="bbbbee-ui">
+                <sheet>
+                    <group>
+                        <field name="profile_id"/>
+                        <field name="company_id" readonly="1"/>
+                    </group>
+                    <group>
+                        <div class="text-muted o_form_label">
+                            Create multiple certificate or affidavit records for the selected supplier in one pass.
+                        </div>
+                    </group>
+                    <field name="line_ids" mode="list,form">
+                        <list editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="certificate_type"/>
+                            <field name="certificate_number"/>
+                            <field name="issue_date"/>
+                            <field name="expiry_date"/>
+                            <field name="tag_ids" widget="many2many_tags"/>
+                            <field name="attachment_file" widget="binary" filename="attachment_filename"/>
+                            <field name="attachment_filename"/>
+                        </list>
+                    </field>
+                </sheet>
+                <footer>
+                    <button name="action_create_documents" type="object" string="Create Documents" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

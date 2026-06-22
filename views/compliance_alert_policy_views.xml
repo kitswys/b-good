@@ -1,0 +1,47 @@
+<odoo>
+    <record id="action_bbbbee_alert_policy" model="ir.actions.act_window">
+        <field name="name">Alert Policies</field>
+        <field name="res_model">bbbbee.compliance.alert.policy</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_bbbbee_alert_policy_list" model="ir.ui.view">
+        <field name="name">bbbbee.compliance.alert.policy.list</field>
+        <field name="model">bbbbee.compliance.alert.policy</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="company_id"/>
+                <field name="reminder_days"/>
+                <field name="activity_user_id"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_bbbbee_alert_policy_form" model="ir.ui.view">
+        <field name="name">bbbbee.compliance.alert.policy.form</field>
+        <field name="model">bbbbee.compliance.alert.policy</field>
+        <field name="arch" type="xml">
+            <form class="bbbbee-ui">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="company_id" readonly="1"/>
+                        <field name="active"/>
+                    </group>
+                    <group>
+                        <field name="reminder_days"/>
+                        <field name="activity_user_id"/>
+                        <field name="email_template_id"/>
+                    </group>
+                    <group>
+                        <div class="text-muted o_form_label">
+                            Reminder days are comma-separated windows, for example 30,14,7.
+                        </div>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

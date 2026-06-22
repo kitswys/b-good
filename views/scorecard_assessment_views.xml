@@ -1,0 +1,153 @@
+<odoo>
+    <record id="view_bbbbee_measurement_period_list" model="ir.ui.view">
+        <field name="name">bbbbee.measurement.period.list</field>
+        <field name="model">bbbbee.measurement.period</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="company_id"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="active_rule_set_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_bbbbee_measurement_period_form" model="ir.ui.view">
+        <field name="name">bbbbee.measurement.period.form</field>
+        <field name="model">bbbbee.measurement.period</field>
+        <field name="arch" type="xml">
+            <form class="bbbbee-ui">
+                <sheet>
+                    <group>
+                        <div class="bbbbee-help-box">
+                            <strong>Screen Help:</strong> Create the compliance window used for spend and score calculations.
+                            <br/>
+                            If setup fails, ensure dates do not overlap existing periods and select an active rule set.
+                        </div>
+                    </group>
+                    <group>
+                        <field name="name"/>
+                        <field name="company_id" readonly="1"/>
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+                        <field name="active_rule_set_id"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_bbbbee_scorecard_assessment_list" model="ir.ui.view">
+        <field name="name">bbbbee.scorecard.assessment.list</field>
+        <field name="model">bbbbee.scorecard.assessment</field>
+        <field name="arch" type="xml">
+            <list class="o_list_view_table table table-sm table-hover bbbbee-table-view bbbbee-premium-list bbbbee-scorecard-assessment-list">
+                <field name="name" width="26%" class="font-weight-bold text-dark"/>
+                <field name="measurement_period_id" width="14%"/>
+                <field name="total_measured_spend" width="15%"/>
+                <field name="recognised_procurement_spend" width="15%"/>
+                <field name="achieved_percentage" width="10%"/>
+                <field name="actual_points" width="10%"/>
+                <field name="state_badge_html" string="State" widget="html" width="10%"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_bbbbee_scorecard_assessment_form" model="ir.ui.view">
+        <field name="name">bbbbee.scorecard.assessment.form</field>
+        <field name="model">bbbbee.scorecard.assessment</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_recalculate" type="object" string="Recalculate" class="btn-primary" invisible="state == 'frozen'"/>
+                    <button name="action_approve" type="object" string="Approve" invisible="state in ('approved', 'frozen')"/>
+                    <button name="action_freeze" type="object" string="Freeze" invisible="state == 'frozen'"/>
+                    <button name="action_reset_to_draft" type="object" string="Reset to Draft" invisible="state == 'draft'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <div class="bbbbee-help-box">
+                            <strong>Screen Help:</strong> Link spend batches, then recalculate to compute scorecard outcomes.
+                            <br/>
+                            If achieved % is below target, prioritise compliant suppliers and close missing evidence gaps.
+                        </div>
+                    </group>
+                    <group>
+                        <field name="name" readonly="state in ('approved', 'frozen')"/>
+                        <field name="company_id" readonly="1"/>
+                        <field name="measurement_period_id" readonly="state in ('approved', 'frozen')"/>
+                        <field name="rule_set_id" readonly="state in ('approved', 'frozen')"/>
+                    </group>
+                    <group>
+                        <field name="total_measured_spend" readonly="1"/>
+                        <field name="recognised_procurement_spend" readonly="1"/>
+                        <field name="target_percentage" readonly="1"/>
+                        <field name="achieved_percentage" readonly="1"/>
+                        <field name="available_points" readonly="1"/>
+                        <field name="actual_points" readonly="1"/>
+                        <field name="shortfall_amount" readonly="1"/>
+                    </group>
+                    <field name="spend_batch_ids" readonly="state in ('approved', 'frozen')"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_bbbbee_scorecard_rule_set_list" model="ir.ui.view">
+        <field name="name">bbbbee.scorecard.rule.set.list</field>
+        <field name="model">bbbbee.scorecard.rule.set</field>
+        <field name="arch" type="xml">
+            <list class="o_list_view_table table table-sm table-hover bbbbee-table-view bbbbee-premium-list">
+                <field name="name" width="32%" class="font-weight-bold text-dark"/>
+                <field name="effective_date" width="14%"/>
+                <field name="expiry_date" width="14%"/>
+                <field name="target_percentage" width="12%"/>
+                <field name="available_points" width="12%"/>
+                <field name="state" widget="badge" width="16%"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_bbbbee_scorecard_rule_set_form" model="ir.ui.view">
+        <field name="name">bbbbee.scorecard.rule.set.form</field>
+        <field name="model">bbbbee.scorecard.rule.set</field>
+        <field name="arch" type="xml">
+            <form string="Rule Set" class="bbbbee-ui">
+                <sheet>
+                    <group>
+                        <div class="bbbbee-help-box">
+                            <strong>Screen Help:</strong> Rule sets define target percentage and points available.
+                            <br/>
+                            If indicators are empty, add rows in the Indicators tab to make scoring rules explicit.
+                        </div>
+                    </group>
+                    <group>
+                        <field name="name"/>
+                        <field name="company_id" readonly="1"/>
+                        <field name="effective_date"/>
+                        <field name="expiry_date"/>
+                    </group>
+                    <group>
+                        <field name="target_percentage"/>
+                        <field name="available_points"/>
+                        <field name="state"/>
+                    </group>
+                    <notebook>
+                        <page string="Indicators">
+                            <field name="indicator_ids">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="target_percentage"/>
+                                    <field name="available_points"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

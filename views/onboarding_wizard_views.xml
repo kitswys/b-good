@@ -1,0 +1,108 @@
+<odoo>
+    <record id="action_bbbbee_onboarding_wizard" model="ir.actions.act_window">
+        <field name="name">Start Here</field>
+        <field name="res_model">bbbbee.onboarding.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+
+    <record id="view_bbbbee_onboarding_wizard_form" model="ir.ui.view">
+        <field name="name">bbbbee.onboarding.wizard.form</field>
+        <field name="model">bbbbee.onboarding.wizard</field>
+        <field name="arch" type="xml">
+            <form string="B-BBEE Procurement Control" class="bbbbee-ui">
+                <sheet class="bg-100">
+                    <div class="row bbbbee-onboarding-layout">
+                        <div class="col-lg-4 col-12">
+                            <div class="card p-4 shadow-sm border-0 h-100">
+                                <field name="overview_html" nolabel="1"/>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-12">
+                            <div class="bbbbee-onboarding-panel">
+                                <div class="bbbbee-onboarding-panel-head">
+                                    <div class="bbbbee-onboarding-kicker">Recommended path</div>
+                                    <h3>Do these steps in order</h3>
+                                    <p>Each step opens the right screen so you can complete setup without hunting through menus.</p>
+                                </div>
+                                <div class="card p-3 mb-3 shadow-sm border-0 bg-white">
+                                    <div class="row align-items-center">
+                                        <div class="col-2">
+                                            <div class="bbbbee-step-number">1</div>
+                                        </div>
+                                        <div class="col-10">
+                                            <div class="bbbbee-step-body">
+                                                <h4>Set your framework</h4>
+                                                <p>Create measurement periods and scoring rules before anything else.</p>
+                                                <div class="bbbbee-action-toolbar">
+                                                    <button name="action_open_measurement_periods" type="object" string="Measurement Periods" class="btn btn-primary bbbbee-action-btn"/>
+                                                    <button name="action_open_rule_sets" type="object" string="Rule Sets" class="btn btn-link text-muted ml-3 bbbbee-link-btn"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card p-3 mb-3 shadow-sm border-0 bg-white">
+                                    <div class="row align-items-center">
+                                        <div class="col-2">
+                                            <div class="bbbbee-step-number">2</div>
+                                        </div>
+                                        <div class="col-10">
+                                            <div class="bbbbee-step-body">
+                                                <h4>Load supplier evidence</h4>
+                                                <p>Build the supplier register and attach certificates and affidavits.</p>
+                                                <div class="bbbbee-action-toolbar">
+                                                    <button name="action_open_supplier_profiles" type="object" string="Supplier Profiles" class="btn btn-primary bbbbee-action-btn"/>
+                                                    <button name="action_open_certificates" type="object" string="Certificates" class="btn btn-link text-muted ml-3 bbbbee-link-btn"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card p-3 mb-3 shadow-sm border-0 bg-white">
+                                    <div class="row align-items-center">
+                                        <div class="col-2">
+                                            <div class="bbbbee-step-number">3</div>
+                                        </div>
+                                        <div class="col-10">
+                                            <div class="bbbbee-step-body">
+                                                <h4>Bring in spend</h4>
+                                                <p>Import posted spend and inspect how much is at risk or ready for recognition.</p>
+                                                <div class="bbbbee-action-toolbar">
+                                                    <button name="action_open_import_spend" type="object" string="Import Spend" class="btn btn-primary bbbbee-action-btn"/>
+                                                    <button name="action_open_spend_batches" type="object" string="Spend Batches" class="btn btn-link text-muted ml-3 bbbbee-link-btn"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card p-3 mb-3 shadow-sm border-0 bg-white">
+                                    <div class="row align-items-center">
+                                        <div class="col-2">
+                                            <div class="bbbbee-step-number">4</div>
+                                        </div>
+                                        <div class="col-10">
+                                            <div class="bbbbee-step-body">
+                                                <h4>Review and package</h4>
+                                                <p>Recalculate the scorecard and generate evidence packs for review or sharing.</p>
+                                                <div class="bbbbee-action-toolbar">
+                                                    <button name="action_open_recalculate_scorecard" type="object" string="Recalculate Scorecard" class="btn btn-primary bbbbee-action-btn"/>
+                                                    <button name="action_open_generate_evidence" type="object" string="Generate Evidence Pack" class="btn btn-link text-muted ml-3 bbbbee-link-btn"/>
+                                                    <button name="action_open_assessments" type="object" string="Assessments" class="btn btn-link text-muted ml-3 bbbbee-link-btn"/>
+                                                    <button name="action_open_evidence_packs" type="object" string="Evidence Packs" class="btn btn-link text-muted ml-3 bbbbee-link-btn"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </sheet>
+                <footer>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

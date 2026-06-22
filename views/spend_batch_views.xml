@@ -1,0 +1,64 @@
+<odoo>
+    <record id="view_bbbbee_spend_batch_list" model="ir.ui.view">
+        <field name="name">bbbbee.spend.batch.list</field>
+        <field name="model">bbbbee.spend.batch</field>
+        <field name="arch" type="xml">
+            <list class="o_list_view_table table table-sm table-hover bbbbee-table-view bbbbee-premium-list bbbbee-spend-batch-list">
+                <field name="name" width="28%" class="font-weight-bold text-dark"/>
+                <field name="measurement_period_id" width="18%"/>
+                <field name="company_id" width="18%"/>
+                <field name="total_included_amount" width="14%"/>
+                <field name="total_recognised_amount" width="14%"/>
+                <field name="state_badge_html" string="State" widget="html" width="8%"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_bbbbee_spend_batch_form" model="ir.ui.view">
+        <field name="name">bbbbee.spend.batch.form</field>
+        <field name="model">bbbbee.spend.batch</field>
+        <field name="arch" type="xml">
+            <form class="bbbbee-ui">
+                <sheet>
+                    <group>
+                        <div class="bbbbee-help-box">
+                            <strong>Screen Help:</strong> This batch groups spend lines for one measurement period.
+                            <br/>
+                            It gives a period-level view of included spend, recognised spend, and the evidence quality behind both.
+                            If recognised totals look low, review supplier recognition percentages, evidence status, and line classification.
+                        </div>
+                    </group>
+                    <div class="row mb-3 align-items-stretch">
+                        <div class="col-md-9 col-12">
+                            <div class="card border-0 shadow-sm h-100 p-3" style="background:#fff;">
+                                <div style="font-size:11px;font-weight:800;letter-spacing:0.03em;text-transform:uppercase;color:#2f5be3;margin-bottom:8px;">Batch Controls</div>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <button name="action_set_review" type="object" string="Set In Review" class="btn btn-outline-secondary bbbbee-ghost-btn" invisible="state in ('review', 'locked', 'superseded')"/>
+                                    <button name="action_lock" type="object" string="Lock Batch" class="btn btn-primary bbbbee-primary-btn" invisible="state == 'locked'"/>
+                                    <button name="action_reset_to_draft" type="object" string="Reset to Draft" class="btn btn-outline-secondary bbbbee-ghost-btn" invisible="state == 'draft'"/>
+                                    <button name="action_print_schedule" type="object" string="Print Schedule" class="btn btn-outline-secondary bbbbee-ghost-btn"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-12 mt-3 mt-md-0">
+                            <div class="card border-0 shadow-sm h-100 p-3" style="background:#fff;">
+                                <div style="font-size:11px;font-weight:800;letter-spacing:0.03em;text-transform:uppercase;color:#2f5be3;margin-bottom:8px;">Current State</div>
+                                <field name="state" readonly="1" nolabel="1"/>
+                            </div>
+                        </div>
+                    </div>
+                    <group>
+                        <field name="name" readonly="state == 'locked'"/>
+                        <field name="measurement_period_id" readonly="state == 'locked'"/>
+                        <field name="company_id" readonly="1"/>
+                    </group>
+                    <group>
+                        <field name="total_included_amount" readonly="1"/>
+                        <field name="total_recognised_amount" readonly="1"/>
+                    </group>
+                    <field name="line_ids" readonly="state == 'locked'"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

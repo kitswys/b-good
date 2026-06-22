@@ -1,0 +1,19 @@
+<odoo>
+    <record id="view_ir_module_module_kanban_bbbbee" model="ir.ui.view">
+        <field name="name">ir.module.module.kanban.bbbbee</field>
+        <field name="model">ir.module.module</field>
+        <field name="inherit_id" ref="base.module_view_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//t[@t-name='card']/main/footer" position="inside">
+                <button
+                    type="object"
+                    name="button_immediate_upgrade"
+                    class="btn btn-info btn-sm me-1"
+                    t-if="record.name.raw_value == 'bbbbee_procurement' and record.state.raw_value == 'installed'"
+                    groups="base.group_system">
+                    Upgrade
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

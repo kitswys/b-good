@@ -1,0 +1,73 @@
+<odoo>
+    <record id="view_bbbbee_spend_line_graph_classification" model="ir.ui.view">
+        <field name="name">bbbbee.spend.line.graph.classification</field>
+        <field name="model">bbbbee.spend.line</field>
+        <field name="arch" type="xml">
+            <graph string="Spend Classification" type="pie">
+                <field name="classification"/>
+                <field name="included_amount" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_bbbbee_spend_line_graph_evidence_status" model="ir.ui.view">
+        <field name="name">bbbbee.spend.line.graph.evidence.status</field>
+        <field name="model">bbbbee.spend.line</field>
+        <field name="arch" type="xml">
+            <graph string="Evidence Status Distribution" type="pie">
+                <field name="evidence_status"/>
+                <field name="included_amount" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_bbbbee_certificate_graph_status" model="ir.ui.view">
+        <field name="name">bbbbee.supplier.certificate.graph.status</field>
+        <field name="model">bbbbee.supplier.certificate</field>
+        <field name="arch" type="xml">
+            <graph string="Certificate Status" type="pie">
+                <field name="state"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_bbbbee_assessment_graph_trend" model="ir.ui.view">
+        <field name="name">bbbbee.scorecard.assessment.graph.trend</field>
+        <field name="model">bbbbee.scorecard.assessment</field>
+        <field name="arch" type="xml">
+            <graph string="Assessment Trend" type="bar">
+                <field name="measurement_period_id"/>
+                <field name="total_measured_spend" type="measure"/>
+                <field name="recognised_procurement_spend" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="action_bbbbee_chart_spend_classification" model="ir.actions.act_window">
+        <field name="name">Spend Classification Chart</field>
+        <field name="res_model">bbbbee.spend.line</field>
+        <field name="view_mode">graph,pivot,list</field>
+        <field name="view_id" ref="view_bbbbee_spend_line_graph_classification"/>
+    </record>
+
+    <record id="action_bbbbee_chart_evidence_status" model="ir.actions.act_window">
+        <field name="name">Evidence Status Chart</field>
+        <field name="res_model">bbbbee.spend.line</field>
+        <field name="view_mode">graph,pivot,list</field>
+        <field name="view_id" ref="view_bbbbee_spend_line_graph_evidence_status"/>
+    </record>
+
+    <record id="action_bbbbee_chart_certificate_status" model="ir.actions.act_window">
+        <field name="name">Certificate Status Chart</field>
+        <field name="res_model">bbbbee.supplier.certificate</field>
+        <field name="view_mode">graph,pivot,list</field>
+        <field name="view_id" ref="view_bbbbee_certificate_graph_status"/>
+    </record>
+
+    <record id="action_bbbbee_chart_assessment_trend" model="ir.actions.act_window">
+        <field name="name">Assessment Trend Chart</field>
+        <field name="res_model">bbbbee.scorecard.assessment</field>
+        <field name="view_mode">graph,pivot,list</field>
+        <field name="view_id" ref="view_bbbbee_assessment_graph_trend"/>
+    </record>
+</odoo>

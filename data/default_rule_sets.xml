@@ -1,0 +1,10 @@
+<odoo noupdate="1">
+    <record id="rule_set_generic_procurement" model="bbbbee.scorecard.rule.set">
+        <field name="name">Generic Procurement Rule Set</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="effective_date">2026-01-01</field>
+        <field name="target_percentage">80.0</field>
+        <field name="available_points">25.0</field>
+        <field name="state">active</field>
+    </record>
+</odoo>

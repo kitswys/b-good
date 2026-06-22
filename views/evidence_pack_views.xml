@@ -1,0 +1,59 @@
+<odoo>
+    <record id="view_bbbbee_evidence_pack_list" model="ir.ui.view">
+        <field name="name">bbbbee.evidence.pack.list</field>
+        <field name="model">bbbbee.evidence.pack</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="measurement_period_id"/>
+                <field name="assessment_id"/>
+                <field name="generated_on"/>
+                <field name="version"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_bbbbee_evidence_pack_form" model="ir.ui.view">
+        <field name="name">bbbbee.evidence.pack.form</field>
+        <field name="model">bbbbee.evidence.pack</field>
+        <field name="arch" type="xml">
+            <form class="bbbbee-ui">
+                <header>
+                    <button name="action_freeze" type="object" string="Freeze" invisible="state == 'frozen'"/>
+                    <button name="action_print_pdf" type="object" string="Print PDF"/>
+                    <button name="action_print_missing_evidence" type="object" string="Print Missing Evidence"/>
+                    <button name="action_export_xlsx" type="object" string="Export Excel"/>
+                    <button name="action_export_audit_zip" type="object" string="Export Audit ZIP"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <div class="bbbbee-help-box">
+                            <strong>Screen Help:</strong> Evidence packs consolidate compliance proof for review/audit.
+                            <br/>
+                            If missing items are high, print Missing Evidence report and upload missing certificate files first.
+                        </div>
+                    </group>
+                    <group>
+                        <field name="name"/>
+                    <field name="company_id" readonly="1"/>
+                        <field name="measurement_period_id"/>
+                        <field name="assessment_id"/>
+                        <field name="generated_on"/>
+                        <field name="version"/>
+                    </group>
+                    <field name="item_ids" mode="list,form">
+                        <list editable="bottom">
+                            <field name="name"/>
+                            <field name="item_type"/>
+                            <field name="tag_ids" widget="many2many_tags"/>
+                            <field name="attachment_id"/>
+                            <field name="note"/>
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
